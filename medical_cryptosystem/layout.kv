@@ -1,0 +1,465 @@
+ScreenController:
+    LoginScreen:
+    MainScreen:
+    MedicalDetailScreen:
+
+<LoginScreen>
+    name:'login_screen'
+
+    MDScreen:
+        
+
+        MDCard:
+            size_hint: .80, .8
+            pos_hint:{'center_x':0.5 , 'center_y':0.5}
+            orientation: 'vertical'
+            elevation:10
+            padding:30
+            spacing:8
+
+            MDLabel:
+                text: "CRYPTOMEDIC ENCRYPTION SYSTEM"
+                font_size:25
+                # text_color:app.theme_cls.accent_color
+                theme_text_color:"Primary"
+                halign:'center'
+                size_hint_y: None
+                height:self.texture_size[1]
+
+            MDLabel:
+                text: "(RSA --- CTR PARALLEL ENCRYPTION MODE)"
+                font_size:18
+                text_color:app.theme_cls.accent_color
+                # theme_text_color:"Primary"
+                halign:'center'
+                size_hint_y: None
+                height:self.texture_size[1]
+            
+            Widget:
+                size_hint_y:None
+                height:40
+
+            MDTextField:
+                hint_text:'Enter ID Code'
+                icon_left:"account"
+                padding:15
+                normal_color:app.theme_cls.accent_color
+                line_color_normal:app.theme_cls.accent_color
+                color_mode:"custom"
+                size_hint_x:.70
+                pos_hint:{'center_x':.50}
+
+            MDTextField:
+                hint_text:'Enter Access Code'
+                icon_left:"key-variant"
+                hint_color:app.theme_cls.accent_color
+                password:True
+                padding:15
+                normal_color:app.theme_cls.accent_color
+                line_color_normal:app.theme_cls.accent_color
+                size_hint_x:.70
+                pos_hint:{'center_x':.50}
+
+            MDCard:
+                orientation:'horizontal'
+                spacing:10
+                padding:10
+                pos_hint:{'center_x':.50}
+                size_hint:None, None
+                height:80
+                width: 180
+        
+
+                MDRectangleFlatButton:
+                    text: 'Doctor'
+                    # text_color:app.theme_cls.accent_color
+                    # theme_text_color:'Primary'
+                    # md_bg_color: app.theme_cls.primary_light
+                    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                    on_release:app.root.current='main_screen'
+                
+                MDRectangleFlatButton:
+                    text: 'Patient'
+                    # text_color:app.theme_cls.accent_color
+                    # theme_text_color:'Primary'
+                    # md_bg_color: app.theme_cls.primary_light
+                    pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                    on_release:app.root.current='detail_screen'
+                
+                
+                # MDRectangleFlatButton:
+                #     text: 'Cancel'
+                #     # text_color:app.theme_cls.accent_color
+                #     # theme_text_color:'Primary'
+                #     # md_bg_color: app.theme_cls.primary_light
+                #     pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+
+<MainScreen>
+    name:"main_screen"
+
+    MDCard:
+        id:layout
+        orientation:'vertical'
+        pos_hint:{"center_x":.5 , "center_y":.5}
+        size_hint:1,1
+        padding:10
+
+        # MDDataTable:
+        #     id:table
+
+        MDCard:
+            orientation:'vertical'
+            pos_hint:{"center_x":.5}
+            # md_bg_color:app.theme_cls.primary_light
+            size_hint:.7,1
+            spacing:50
+            padding:10
+
+            MDRectangleFlatButton:
+                text: 'CTR-RSA SECURE RECORD'
+                # text_color:app.theme_cls.accent_color
+                # theme_text_color:'Primary'
+                # md_bg_color: app.theme_cls.primary_light
+                pos_hint: {'center_x': 0.5}
+                on_release:app.encryption_box()
+                    
+            
+            
+        MDCard:
+            orientation:'horizontal'
+            pos_hint:{"center_x":.5}
+            # md_bg_color:app.theme_cls.primary_light
+            size_hint:.7,1
+            spacing:20 
+            padding:10
+      
+            MDTextField:
+                hint_text:'ENTER CTR KEY'
+                icon_right:"key-variant"
+                # mode:"rectangle"
+                id:text_encryption_key
+                hint_color:app.theme_cls.accent_color
+                password:False
+                padding:15
+                max_text_length:16
+                normal_color:app.theme_cls.accent_color
+                line_color_normal:app.theme_cls.accent_color
+                size_hint_x:.20
+                pos_hint:{'center_x':.60}  
+
+       
+        MDTextField:
+            hint_text:'Search Record'
+            icon_right:"magnifier"
+            mode:'rectangle'
+            hint_color:app.theme_cls.accent_color
+            password:False
+            padding:15
+            normal_color:app.theme_cls.accent_color
+            line_color_normal:app.theme_cls.accent_color
+            size_hint_x:.80
+            pos_hint:{'center_x':.50}     
+
+
+
+<MedicalDetailScreen>
+    name:'detail_screen'
+    MDCard:     
+        orientation:'vertical'
+        pos_hint:{"center_x":.5 , "center_y":.5}
+        size_hint:.8,.8
+        padding:8
+
+        MDLabel:
+            text:"RECORD PRESAVATION SYSTEM"
+            size_hint_y: None 
+            height:self.texture_size[1]
+            theme_text_color:"Primary"
+            halign:'center'
+            font_size:20
+            text_align:'center'
+
+        #  ROW 1 MEDICAL ID DATA
+        MDCard:
+            id:layout
+            orientation:'horizontal'
+            padding:10
+            spacing:10
+
+#  THE DETATIL VERTICAL SPLITTING............
+
+            MDCard:
+                id:layout
+                orientation:'vertical'
+                padding:2
+                spacing:1
+
+                # LEFT SIDE WITH  ID, NAME, AGE AND SEX
+                # =============================
+               
+                FloatLayout:
+                    canvas:
+                        Color:
+                            rgb: 1, 1, 1
+                        Ellipse:
+                            pos: 180, 400
+                            size: 100 , 100 
+                            source: 'userIcon.png'
+                            angle_start: 0
+                            angle_end: 360
+               
+               
+               
+                MDCard:
+                    id:layout
+                    orientation:'horizontal'
+                    padding:2
+                    spacing:2
+
+                    MDLabel:
+                        text:"MEDICAL ID"
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+                    MDLabel:
+                        text:"XXXXXX"
+                        id:label_id
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+        
+
+                    #  ROW 2 MEDICAL NAME DATA
+                MDCard:
+                    id:layout
+                    orientation:'horizontal'
+                    padding:2
+                    spacing:2
+                    
+                    MDLabel:
+                        text:"NAME"
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+                    MDLabel:
+                        text:"XXXXXX"
+                        id:label_name
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+        
+                        #  ROW 3 MEDICAL ID DATA
+                MDCard:
+                    id:layout
+                    orientation:'horizontal'
+                    padding:2
+                    spacing:2
+                    
+                    MDLabel:
+                        text:"SEX"
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+                    MDLabel:
+                        text:"XXXXXX"
+                        size_hint_y: None 
+                        id:label_sex
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+        
+                     #  ROW 4 MEDICAL ID DATA
+                MDCard:
+                    id:layout
+                    orientation:'horizontal'
+                    padding:2
+                    spacing:2
+                    
+                    MDLabel:
+                        text:"AGE"
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+                    MDLabel:
+                        text:"XXXXXX"
+                        id:label_age
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:10
+                    padding:10
+                    pos_hint:{'center_x':.50}
+                    size_hint:None, None
+                    height:80
+                    width: 180
+        
+
+                    MDRectangleFlatButton:
+                        text: 'Logout'
+                        # text_color:app.theme_cls.accent_color
+                        # theme_text_color:'Primary'
+                        # md_bg_color: app.theme_cls.primary_light
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        size_hint:.5, .6
+                        on_release:app.root.current='login_screen'
+                       
+
+                    MDRectangleFlatButton:
+                        text: 'Decrypt'
+                        # text_color:app.theme_cls.accent_color
+                        # theme_text_color:'Primary'
+                        # md_bg_color: app.theme_cls.primary_light
+                        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+                        size_hint:.5, .6
+                        # on_release:app.root.current='detail_screen'
+                        on_release: app.decryption_box()
+                    
+                MDTextField:
+                    hint_text:'Enter ID for Decryption File'
+                    icon_right:"magnifier"
+                    id:id_txt_id_file
+                    mode:'rectangle'
+                    hint_color:app.theme_cls.accent_color
+                    password:False
+                    padding:5
+                    normal_color:app.theme_cls.accent_color
+                    line_color_normal:app.theme_cls.accent_color
+                    size_hint_x:.80
+                    pos_hint:{'center_x':.50} 
+                
+                Widget:
+                    size_hint_y:None
+                    height:0
+
+
+        
+             # RIGHT SIDE WITH  ID, NAME, AGE AND SEX
+                # =============================
+            MDCard:
+                id:layout
+                orientation:'vertical'
+                padding:10
+                spacing:2
+
+                MDCard:
+                    id:layout
+                    orientation:'horizontal'
+                    padding:5
+                    spacing:2
+                
+                    MDLabel:
+                        text:"ANTIVIRAL"
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+                    MDLabel:
+                        text:"XXXXXX"
+                        id:label_antiviral
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+        
+             #  ROW 6 MEDICAL ID DATA
+                MDCard:
+                    id:layout
+                    orientation:'horizontal'
+                    padding:5
+                    spacing:2
+                    
+                    MDLabel:
+                        text:"LIVERBIG"
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+                    MDLabel:
+                        text:"XXXXXX"
+                        id:label_liverbig
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+        
+             #  ROW 7 MEDICAL ID DATA
+                MDCard:
+                    id:layout
+                    orientation:'horizontal'
+                    padding:5
+                    spacing:2
+                    
+                    MDLabel:
+                        text:"BILLIRUBIN"
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+                    MDLabel:
+                        text:"XXXXXX"
+                        id:label_bilirubin
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+
+        
+                MDCard:
+                    id:layout
+                    orientation:'horizontal'
+                    padding:5
+                    spacing:2
+                    
+
+                    MDLabel:
+                        text:"ALBUMIN"
+                        size_hint_y: None 
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'
+
+                    MDLabel:
+                        text:"XXXXXX"
+                        size_hint_y: None 
+                        id:label_albumin
+                        height:self.texture_size[1]
+                        theme_text_color:"Primary"
+                        halign:'center'
+                        text_align:'center'

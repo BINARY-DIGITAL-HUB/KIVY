@@ -1,0 +1,259 @@
+MDScreen:
+
+    MDCard:
+        orientation:"vertical"
+        elevaltion:10
+        pos_hint: {'center_x': 0.5,'center_y': 0.5}
+        size_hint: .9, .9
+        spacing:5
+        padding:5
+        
+
+        # Application title...
+        MDLabel:
+            text: "BANKING LOAN AI BASED PREDICTION SYSTEM"
+            text_color:app.theme_cls.primary_color
+            font_size:20
+            bold:True
+            halign:'center'
+            size_hint_y:None
+            height:self.texture_size[1]
+
+        MDCard:
+            orientation:'horizontal'
+            spacing:10
+            # md_bg_color:app.theme_cls.primary_color
+
+            MDCard:
+                orientation:'vertical'
+                spacing:2
+
+                MDDropDownItem:
+                    id: id_sex
+                    # pos_hint: {'center_x': .5, 'center_y': .6}
+                    size_hint_x: None
+                    width: "300dp"
+                    hint_text: 'CLIENT SEX'
+                    text:'CLIENT SEX'
+                    width: dp(300)
+                    on_release: app.activate_sex()
+                
+                MDDropDownItem:
+                    id: id_married
+                    # pos_hint: {'center_x': .5, 'center_y': .6}
+                    size_hint_x: None
+                    width: "300dp"
+                    hint_text: 'MARRIED'
+                    width: dp(300)
+                    text:'MARRIED'
+                    on_release: app.activate_married()
+
+                MDDropDownItem:
+                    id: id_dependent
+                    # pos_hint: {'center_x': .5, 'center_y': .6}
+                    size_hint_x: None
+                    width: "300dp"
+                    hint_text: 'MARRIED'
+                    width: dp(300)
+                    text:'DEPENDENT?'
+                    on_release: app.activate_dependent()
+                
+                MDDropDownItem:
+                    id: id_education
+                    # pos_hint: {'center_x': .5, 'center_y': .6}
+                    size_hint_x: None
+                    width: "300dp"
+                    hint_text: 'EDUCATED?'
+                    width: dp(300)
+                    text:'GRADUATE?'
+                    on_release: app.activate_education()
+
+                MDDropDownItem:
+                    id: id_self_employe
+                    # pos_hint: {'center_x': .5, 'center_y': .6}
+                    size_hint_x: None
+                    width: "300dp"
+                    hint_text: 'EDUCATED?'
+                    width: dp(300)
+                    text:'SELF EMPLOYED?'
+                    on_release: app.activate_self_employe()
+                
+                MDTextField:
+                    hint_text:"INCOME AMOUNT"
+                    id:id_income_amount
+                    size_hint:None , None
+                    width: dp(150)
+                    height:dp(50)
+
+                MDTextField:
+                    hint_text:"OTHER INCOMES"
+                    id:id_other_income
+                    size_hint:None , None
+                    width: dp(150)
+                    height:dp(50)
+
+                MDTextField:
+                    hint_text:"LOAN AMOUNT"
+                    id:id_loan_amount
+                    size_hint:None , None
+                    width: dp(150)
+                
+                MDTextField:
+                    hint_text:"LOAN TERM"
+                    id:id_loan_term
+                    size_hint:None , None
+                    width: dp(150)
+                
+                MDDropDownItem:
+                    id: id_history
+                    # pos_hint: {'center_x': .5, 'center_y': .6}
+                    size_hint_x: None
+                    width: "300dp"
+                    hint_text: 'EDUCATED?'
+                    width: dp(300)
+                    text:'CREDIT HISTORY?'
+                    on_release: app.activate_history()
+                
+                MDDropDownItem:
+                    id: id_proparea
+                    # pos_hint: {'center_x': .5, 'center_y': .6}
+                    size_hint_x: None
+                    width: "300dp"
+                    hint_text: 'EDUCATED?'
+                    width: dp(300)
+                    text:'PROPERTY AREA?'
+                    on_release: app.activate_proparea()
+
+               
+
+            
+            MDCard:
+                orientation:'vertical'
+                spacing:2
+
+
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:10
+
+                    MDLabel:
+                        text:"MACHINE MODEL"
+                        size_hint_y:None
+                        height:self.texture_size[1]
+                        
+                    MDLabel:
+                        text:"PREDICTION"
+                        size_hint_y:None
+                        height:self.texture_size[1]
+
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:6
+                    MDLabel:
+                        text:"SUPPORT VECTOR"
+                        size_hint_y:None
+                        height:self.texture_size[1]     
+
+
+                    MDRectangleFlatButton:
+                        text:""
+                        id:id_support_vector
+                        size_hint_y:None
+                        # height:self.texture_size[1] 
+
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:10
+                    MDLabel:
+                        text:"LOGISTIC REGRESSION "
+                        size_hint_y:None
+                        height:self.texture_size[1]     
+
+
+                    MDRectangleFlatButton:
+                        text:""
+                        id:id_logistic_regression
+                        size_hint_y:None
+                        # height:self.texture_size[1]
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:10
+                    MDLabel:
+                        text:"DECISION TREE "
+                        size_hint_y:None
+                        height:self.texture_size[1]     
+
+
+                    MDRectangleFlatButton:
+                        text:""
+                        id:id_decision_tree
+                        size_hint_y:None
+                        # height:self.texture_size[1]
+
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:10
+                    MDLabel:
+                        text:"KNN MACHINE "
+                        size_hint_y:None
+                        height:self.texture_size[1]     
+
+
+                    MDRectangleFlatButton:
+                        text:""
+                        id:id_knn
+                        size_hint_y:None
+                        # height:self.texture_size[1]
+
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:10
+                    MDLabel:
+                        text:"NAIVE BAYES "
+                        size_hint_y:None
+                        height:self.texture_size[1]     
+
+
+                    MDRectangleFlatButton:
+                        text:""
+                        id:id_naive_bayes
+                        size_hint_y:None
+                        # height:self.texture_size[1]
+                MDLabel:
+                    text:"==============AGGREGATE============== "
+                    size_hint_y:None
+                    halign:'center'
+                    height:self.texture_size[1]     
+
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:5
+                    MDLabel:
+                        text:"FINAL PREDICTION:LOAN APPROVED? "
+                        size_hint_y:None
+                        height:self.texture_size[1]     
+
+
+                    MDRectangleFlatButton:
+                        text:""
+                        id:id_final_decission
+                        size_hint_y:None
+                
+                MDCard:
+                    orientation:'horizontal'
+                    spacing:10
+                    
+                    MDRectangleFlatButton:
+                        text:"PREDICT"
+                        id:id_final_decesion
+                        size_hint:None,None
+                        width:100
+                        on_press:app.prediction_box()
+                    
+                    MDRectangleFlatButton:
+                        text:"CLEAR"
+                        id:id_final_decesion
+                        size_hint:None,None
+                        width:100
+                        on_press:app.prediction_box()
+                

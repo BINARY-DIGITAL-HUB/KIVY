@@ -1,0 +1,154 @@
+
+#:import utils kivy.utils
+
+<Button>
+	font_size:18
+	background_color:utils.get_color_from_hex("#4D4B4B")
+	
+
+
+<CalController>
+	
+	BoxLayout:
+		orientation:"vertical"
+		size:root.width, root.height
+
+		TextInput:
+			id:screen
+			text:"0"
+			halign:"right"
+			font_size:50
+			size_hint:(1,.15)
+
+
+		GridLayout:
+			cols:4
+			rows:5
+			
+			# row 1
+			Button:
+				text:"%"
+				size_hint:(.2,.2)
+				on_press:root.activate_percent()
+
+			Button:
+				text:"CE"
+				size_hint:(.2,.2)
+				on_press:root.activate_clears()
+
+			Button:
+				text:u"\u00AB"
+				size_hint:(.2,.2)
+				on_press:root.activate_clear()
+
+			Button:
+				text:"/"
+				size_hint:(.2,.2)
+				on_press:root.activate_operator("/")
+
+
+
+			# row 2
+			Button:
+				text:"7"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(7)
+
+			Button:
+				text:"8"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(8)
+
+			Button:
+				text:"9"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(9)
+
+			Button:
+				text:"x"
+				size_hint:(.2,.2)
+				on_press:root.activate_operator("*")
+				
+
+
+			# row
+			Button:
+				text:"4"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(4)
+		
+
+			Button:
+				text:"5"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(5)
+
+			Button:
+				text:"6"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(6)
+
+			Button:
+				text:"-"
+				size_hint:(.2,.2)
+				on_press:root.activate_operator("-")
+
+			# row
+			Button:
+				text:"1"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(1)
+
+			Button:
+				text:"2"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(2)
+
+			Button:
+				text:"3"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(3)
+
+			Button:
+				text:"+"
+				size_hint:(.2,.2)
+				on_press:root.activate_operator("+")
+
+			
+
+			# row
+			Button:
+				markup:True
+				text:"x[sup]n[sup]"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_power()
+
+			Button:
+				text:"0"
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_digit(0)
+
+			Button:
+				text:"."
+				size_hint:(.2,.2)
+				background_color:utils.get_color_from_hex("#272424")
+				on_press:root.activate_dot()
+
+			Button:
+				text:"="
+				size_hint:(.2,.2)
+				on_press:root.activate_equal()
+
+
+			

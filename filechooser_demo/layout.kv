@@ -1,0 +1,45 @@
+Home
+	LoginWindow:
+	HomeWindow:
+
+<LoginWindow>:
+	name:"login_win"
+
+	BoxLayout:
+		orientation:"vertical"
+		size:root.width, root.height
+
+
+		Label:
+			text:"loginScreen"
+			font_size:30
+			
+
+		Button:
+			text:"login"
+			font_size:20
+			on_release:
+				app.root.current="home_win"
+				root.manager.transition.direction = "right"
+
+
+<HomeWindow>:
+	name:"home_win"
+	BoxLayout:
+		orientation:"vertical"
+		size:root.width, root.height
+
+		Label:
+			text:"Home screen"
+			font_size:30
+
+		Button:
+			text:"logout"
+			font_size:20
+			on_release:
+				app.root.current="login_win"
+				root.manager.transition.direction = "left"
+
+
+
+	

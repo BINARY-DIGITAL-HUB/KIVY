@@ -1,0 +1,34 @@
+
+#:import utils kivy.utils
+
+<Interface>
+	
+	fname:fname
+	sname:sname
+
+	GridLayout:
+		cols:1
+		size:root.width, root.height
+
+		GridLayout:
+			cols:2
+
+			Label:
+				text:"FirstName"
+			TextInput:
+				multiline:False
+				id:fname
+
+			Label:
+				text:"SecondName"
+			TextInput:
+				multiline:False
+				id:sname
+
+		Button:
+			text:"Login"
+			font_size:30
+			on_press:root.activate_login()
+			background_color:(0,0,1,1)
+			background_color:utils.get_color_from_hex("#fffff")
+

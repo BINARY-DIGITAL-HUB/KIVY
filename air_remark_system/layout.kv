@@ -1,0 +1,568 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+ScreenPack:
+    LoginScreen:
+    AppScreen:
+	SignUpScreen:
+
+<IconListItem>
+	IconLeftWidget:
+		icon:root.icon
+
+<LoginScreen>:
+    name:"login_screen"
+	
+    MDCard:
+		padding:25
+		size_hint:None, None
+		size:root.width, root.height
+		elevation:10
+		pos_hint:{"center_x":0.5 , "center_y":0.5}
+		orientation:"vertical"
+		spacing:20
+		
+		Image:
+			source:"image/images.jpg"
+			size_hint: None, None
+            size: "60dp", "60dp"
+			pos_hint:{"center_x":.5 , "center_y":.8}
+
+		MDLabel:
+			markup:True
+			text:"Air [sub][i][color=#b71c1c]Mark[/color][/i][/sub]"
+			halign:"center"
+			theme_text_color: "Custom"
+			text_color: get_color_from_hex("#0d47a1")
+			font_size:20
+			size_hint_y: None
+			bold:True
+            height: self.texture_size[1]
+		
+		Widget:
+			size_hint_y:None
+			height:50
+
+		MDTextFieldRound:
+			id:user_name_input
+			hint_text:"username"
+			icon_left:"email"
+			size_hint_x:.9
+			margin:10
+		
+			pos_hint:{"center_x":0.5}
+			font_size:20
+			md_bg_color: None
+			normal_color: 1,1,1,1
+			color_active: 1,1,1,1
+			icon_color:get_color_from_hex("#0d47a1")
+			icon_size:"20"
+		
+
+		MDTextFieldRound:
+			id:password_input
+			hint_text:"password"
+			icon_left:"key"
+			size_hint_x:.9
+			pos_hint:{"center_x":0.5}
+			font_size:20
+			password:True
+			normal_color:0,0,1,0
+			color_active:1,1,1,.5
+			icon_color:get_color_from_hex("#0d47a1")
+			icon_size:"20"
+			line_color:get_color_from_hex("#0d47a1")
+			
+
+		MDRoundFlatButton:
+			id:login_button
+			text:"Login"
+			text_color:1,1,1,1
+			md_bg_color:get_color_from_hex("#0d47a1")
+			pos_hint:{"center_x":0.5}
+			size_hint_x:1
+			on_release:app.activate_login()
+				#app.root.current = "app_screen"
+				#root.manager.transition.direction="right"
+
+		Widget:
+			size_hint_y:None
+			height:20
+
+		MDLabel:
+			text:"FORGET PASSWORD ?"
+			halign:"center"
+			theme_text_color: "Custom"
+			text_color: 0,0,1,1
+			font_size:12
+			size_hint_y: None
+            height: self.texture_size[1]
+
+		MDLabel:
+			text:"Or"
+			halign:"center"
+			theme_text_color: "Custom"
+			text_color: get_color_from_hex("#424242")
+			font_size:8
+			size_hint_y: None
+            height: self.texture_size[1]
+
+		
+		MDCard:
+			orientation:"horizontal"
+			size_hint_y:None
+			height:40
+			padding:30,0,0,0
+			spacing:10
+			pos_hint:{"center_x":.5 , "center_y":.5}
+	
+
+			MDIconButton:
+				icon:"facebook"
+				theme_icon_color:"Custom"
+				icon_color:get_color_from_hex("#1a237e")
+				icon_size:"30"
+			
+			MDIconButton:
+				icon:"instagram"
+				theme_icon_color:"Custom"
+				icon_color:get_color_from_hex("#b71c1c")
+				icon_size:"30"
+			MDIconButton:
+				icon:"twitter"
+				theme_icon_color:"Custom"
+				icon_color:get_color_from_hex("#1976d2")
+				icon_size:"30"
+			MDIconButton:
+				icon:"linkedin"
+				theme_icon_color:"Custom"
+				icon_color:get_color_from_hex("#42a5f5")
+				icon_size:"30"
+
+		
+		Widget:
+			size_hint_y:None
+			height:20
+
+		MDRectangleFlatButton:
+			markup:True
+			text:"New User? [color=#b71c1c]Sign Up[/color]"
+			halign:"center"
+			theme_text_color: "Custom"
+			text_color: get_color_from_hex("#0d47a1")
+			font_size:12
+			size_hint_y: None
+			size_hint_x:.80
+			pos_hint:{'center_x':.50}
+			padding:10
+			line_color:0,0,1,0
+			bold:True
+           # height: self.texture_size[1]
+			on_release:
+				app.root.current = "signup_screen"
+				root.manager.transition.direction="right"
+
+
+	Widget:
+		size_hint_y:None
+		height:50
+
+       
+<Check@MDCheckbox>:
+	group: 'group'
+	size_hint: None, None
+	size: dp(48), dp(48)
+
+<GeneralListIcon@ThreeLineAvatarListItem>
+
+	IconLeftWidget:
+		icon:'plus'
+	
+<Statistic>
+
+<AppScreen>:
+    name:"app_screen"
+
+	MDNavigationLayout:
+
+        ScreenManager:
+
+            MDScreen:
+
+				MDBoxLayout:
+					orientation:"vertical"
+
+					MDToolbar:
+						title: "Airmark"
+						id: toolbar
+						elevation: 10
+						pos_hint: {"top": 1}
+						md_bg_color: get_color_from_hex("#01579b")
+						specific_text_color: get_color_from_hex("#ffffff")
+						left_action_items:
+							[['menu', lambda x: nav_drawer.set_state("open")]]
+						right_action_items:[['dots-vertical', lambda x: app.activate_menu(x)]]
+
+				
+					MDBottomNavigation:
+						panel_color: get_color_from_hex("#01579b")
+						selected_color_background: get_color_from_hex("#01579b")
+
+						MDBottomNavigationItem:
+							name: 'home_buttton'
+							text: 'Home'
+							icon: 'home'
+							icon_color:get_color_from_hex("#FFFFFF")
+							text_color_active:1,1,1,1
+							text_color_normal:1,1,1,1
+							badge_icon: ""
+
+							MDCard:
+								orientation:'vertical'
+								
+
+								ScrollView:
+									size_hint_y:.70
+									MDList:
+										id:comment_list
+
+								
+								#		ThreeLineAvatarListItem:
+								#			text:'owolabi mubarak'
+								#			secondary_text:'customer service'
+								#			tertiary_text:'issue base on cu..'
+#
+#											ImageLeftWidget:
+#												source:'image/images.jpg'
+
+
+
+					
+
+						MDBottomNavigationItem:
+							name: 'remark_button'
+							text: 'Comment'
+							icon: 'comment-multiple'
+							badge_icon: "numeric-5"
+							icon_color:get_color_from_hex("#FFFFFF")
+							text_color_active:1,1,1,1
+							text_color_normal:1,1,1,1
+					
+
+							MDCard:
+								orientation:'vertical'
+
+								
+								MDTextField:
+									id: ticked_id
+									pos_hint: {'center_x': .5, 'center_y': .6}
+									size_hint_x: None
+									width: "300dp"
+									hint_text: 'Ticket Id'
+									
+
+								MDTextField:
+									id: cc_field
+									name:'textfield'
+									pos_hint: {'center_x': .5, 'center_y': .6}
+									size_hint_x: None
+									width: "300dp"
+									hint_text: 'Category Option'
+									on_focus: if self.focus: app.activate_menu_c_c()
+									
+								MDCard:
+									orientation:"horizontal"
+									size_hint_y:None
+									height:40
+									padding:10,0,30,0
+									spacing:2
+									pos_hint:{"center_x":.5 , "center_y":.5}
+									
+									MDLabel:
+										text: 'Route'
+										halign: 'center'
+								
+									MDDropDownItem:
+										id: state_field
+										pos_hint: {'center_x': .2, 'center_y': .6}
+										size_hint_x: None
+										width: "300dp"
+										text: 'From'
+										hint_text: 'Select Airport'
+										on_release: app.activate_menu_states()
+									
+									MDLabel:
+										text: '---'
+										halign: 'center'
+
+									MDDropDownItem:
+										id: state_field2
+										pos_hint: {'center_x': .5, 'center_y': .6}
+										size_hint_x: None
+										width: "300dp"
+										text: 'To'
+										hint_text: 'Select Airport'
+										on_release: app.activate_menu_states2()
+
+
+								MDCard:
+									orientation:"horizontal"
+									size_hint_y:None
+									height:40
+									padding:30,0,0,0
+									spacing:10
+									pos_hint:{"center_x":.5 , "center_y":.5}
+									
+									MDLabel:
+										text: 'Compliment'
+										halign: 'center'
+									
+									Check:
+										active:True
+										id:id_compliment
+									
+										on_active:app.on_checkbox_active(*args,'compliment')
+								
+
+									MDLabel:
+										text: 'Complains'
+										halign: 'center'
+										
+									
+									Check:
+										id:id_complain
+					
+										on_active:app.on_checkbox_active(*args, 'complains')
+
+								MDTextField:
+									mode:'rectangle'
+									hint_text:'enter you comment or complain'
+									multiline:True
+									size_hint_x:.80
+									size_hint_y:.30
+									pos_hint:{'center_x':0.5}
+								
+								MDCard:
+									orientation:"horizontal"
+									size_hint_y:None
+									height:60
+									padding:80,0,0,0
+									spacing:60
+									pos_hint:{"center_x":.5 , "center_y":.5}
+									#md_bg_color:get_color_from_hex('#0d47a1')
+
+									MDRaisedButton:
+										text:'Ok'
+										id:id_button_add_remark
+										md_bg_color:get_color_from_hex("#01579b")
+										pos_hint:{'center_x':.50}
+										on_release:app.activate_add_remark()
+
+									MDRaisedButton:
+										id:id_button_cancel_remark
+										text:'Cancel'
+										md_bg_color:get_color_from_hex("#01579b")
+										pos_hint:{'center_x':.80}
+										on_release: app.activate_remark_clear()
+								
+
+								Widget:
+									size_hint_y:None
+									height:50
+
+
+						MDBottomNavigationItem:
+							name: "setting_button"
+							text: 'DashBoad'
+							icon: 'account-cog'
+						
+							
+
+							Statistic:
+								orientation:'vertical'
+								id:stac_box
+
+								
+
+									
+							Widget:
+								size_hint_y:None
+								height:200
+
+
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            md_bg_color: get_color_from_hex("#f7f4e7")
+
+            ContentNavigationDrawer:
+				orientation: "vertical"
+				padding: "8dp"
+				spacing: "4dp"
+
+				AnchorLayout:
+					anchor_x: "left"
+					size_hint_y: None
+					height: avatar.height
+
+					Image:
+						id: avatar
+						size_hint: None, None
+						size: "56dp", "56dp"
+						source: "strategy.jpg"
+
+				MDLabel:
+					id:lbl_user_name
+					text: "SALAM TAOFEEK"
+					font_style: "Button"
+					size_hint_y: None
+					height: self.texture_size[1]
+
+				MDLabel:
+					text: "kinshat1995@gmail.com"
+					font_style: "Caption"
+					size_hint_y: None
+					height: self.texture_size[1]
+			
+				ScrollView:
+
+					MDList:
+						
+						OneLineIconListItem:
+							text: "ID_12382"
+							IconLeftWidget:
+								icon: "account-circle"
+
+
+						OneLineIconListItem:
+							text: "08065058066"
+							IconLeftWidget:
+								icon: "cellphone"
+
+
+
+<SignUpScreen>:
+    name:"signup_screen"
+	
+    MDCard:
+		padding:25
+		size_hint:None, None
+		size:root.width, root.height
+		elevation:10
+		pos_hint:{"center_x":0.5 , "center_y":0.5}
+		orientation:"vertical"
+		spacing:20
+		
+		MDLabel:
+			text:" REGISTER HERE ?"
+			halign:"center"
+			theme_text_color: "Custom"
+			text_color: 0,0,1,1
+			font_size:12
+			size_hint_y: None
+            height: self.texture_size[1]
+
+
+		Widget:
+			size_hint_y:None
+			height:10
+
+		
+		MDTextField:
+			id: id_register_name
+			name:'textfield'
+			pos_hint: {'center_x': .5, 'center_y': .6}
+			size_hint_x: None
+			width: "300dp"
+			icon_left:'account'
+			hint_text: 'Full Name'
+		
+		MDTextField:
+			id: id_register_email
+			name:'textfield'
+			pos_hint: {'center_x': .5, 'center_y': .6}
+			size_hint_x: None
+			width: "300dp"
+			icon_left:'email'
+			hint_text: 'Email Address'
+
+		MDTextField:
+			id: id_register_age
+			name:'textfield'
+			pos_hint: {'center_x': .5, 'center_y': .6}
+			size_hint_x: None
+			width: "300dp"
+			icon_left:'email'
+			hint_text: 'Age'
+
+		MDTextField:
+			id: id_register_password
+			name:'textfield'
+			pos_hint: {'center_x': .5, 'center_y': .6}
+			size_hint_x: None
+			width: "300dp"
+			icon_left:'key'
+			password:True
+			hint_text: 'Password'
+
+		MDTextField:
+			id: id_register_confirmed_password
+			name:'textfield'
+			pos_hint: {'center_x': .5, 'center_y': .6}
+			size_hint_x: None
+			width: "300dp"
+			icon_left:'key'
+			password:True
+			hint_text: 'Comfirm Password'
+		
+		MDTextField:
+			id: id_register_sex
+			name:'textfield'
+			pos_hint: {'center_x': .5, 'center_y': .6}
+			size_hint_x: None
+			width: "300dp"
+			icon_left:'sex'
+			hint_text: 'Male/Female'
+			on_focus: if self.focus: app.activate_sex_states()
+
+
+
+		Widget:
+			size_hint_y:None
+			height:20
+
+		
+		MDCard:
+			orientation:"horizontal"
+			size_hint_y:None
+			height:40
+			padding:30,0,0,0
+			spacing:30
+			pos_hint:{"center_x":.5 , "center_y":.5}
+	
+
+			MDRaisedButton:
+				id:id_register_submit
+				text:"Submit"
+				theme_icon_color:"Custom"
+				icon_color:get_color_from_hex("#1a237e")
+				icon_size:"30"
+				pos_hint:{'center_x':.30}
+				on_press:app.activate_registration_submit()
+			
+			MDRaisedButton:
+				id:id_register_cancel
+				text:"Cancel"
+				theme_icon_color:"Custom"
+				icon_color:get_color_from_hex("#b71c1c")
+				icon_size:"30"
+				pos_hint:{'center_x':.70}
+				on_press:app.activate_registration_cancel()
+		Widget:
+			size_hint_y:None
+			height:20
+
+		
+	Widget:
+		size_hint_y:None
+		height:50
